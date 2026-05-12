@@ -4,7 +4,17 @@
 
 (**TODO**)
 
+Most of the logics are already finished. But it's not yet available,
+because I'm refactoring it atm.
+
 <br><br>
+
+## Preview
+This is only a first `-h / --help` output.
+
+![Preview (--help / -h)](./img/preview.png)
+
+<br><br><br>
 
 # Contact
 <img src="https://kekse.biz/github.php?override=github:bytecmp&draw&text=bytecmp@kekse.biz&angle=6&size=38pt&fg=150,20,90&font=OpenSans&ro&readonly&h=64&v=16" />
