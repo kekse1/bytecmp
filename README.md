@@ -12,7 +12,7 @@ because I'm refactoring it atm.
 ## Preview
 This is only a first `-?/--help` output.
 
-![Preview (--help/-?)](./img/example.png)
+![Preview (--help/-?)](./img/screenshot.png)
 
 <br><br><br>
 
