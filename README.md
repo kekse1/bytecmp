@@ -10,9 +10,9 @@ because I'm refactoring it atm.
 <br><br>
 
 ## Preview
-This is only a first `-h / --help` output.
+This is only a first `-?/--help` output.
 
-![Preview (--help / -h)](./img/help-preview.png)
+![Preview (--help/-?)](./img/example.png)
 
 <br><br><br>
 
