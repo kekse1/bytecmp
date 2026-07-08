@@ -1074,7 +1074,10 @@ const fileHandler = (_item) => {
 			ERROR.pushUnique(_item.real);
 		}
 		
-		isFinished = null;
+		if(isFinished === false)
+		{
+			isFinished = null;
+		}
 	});
 	
 	_item.stream.once('end',
