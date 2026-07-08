@@ -17,7 +17,7 @@ An example.
 <br><br>
 
 ## Download / Source Code
-* [`bytecmp.js`](./src/bytecmp.js) (v**0.9.9**);
+* [`bytecmp.js`](./src/bytecmp.js) (v**0.9.10**);
 
 <br><br><br>
 
