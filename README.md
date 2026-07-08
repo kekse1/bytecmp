@@ -2,17 +2,22 @@
 
 # `bytecmp`
 
-(**TODO**)
+<br>
 
-Most of the logics are already finished. But it's not yet available,
-because I'm refactoring it atm.
+Finally.. it runs \[**2026-07-08**\]!
 
 <br><br>
 
 ## Preview
-This is only a first `-?/--help` output.
+An example.
 
-![Preview (--help/-?)](./img/screenshot.png)
+![`help` output](./img/help.png)
+![example output](./img/example.png)
+
+<br><br>
+
+## Download / Source Code
+* [`bytecmp.js`](./src/bytecmp.js) (v**0.9.9**);
 
 <br><br><br>
 
