@@ -7,7 +7,13 @@
 
 //
 const
-	VERSION = '0.9.9';
+	VERSION = '0.9.10';
+
+//
+//
+//TODO/am besten noch ein CUT der pfade..
+//	... falls terminal-width zu klein fuer alles..!?! ;-) ...
+//
 
 //
 const
@@ -638,7 +644,7 @@ var	totalFiles = 0,
 	arr;
 
 const filterFile = (_path, _item) => {
-	const item = fs.statSync(_path, {
+	var item = fs.statSync(_path, {
 		throwIfNoEntry: false,
 		bigInt: false });
 
@@ -660,12 +666,13 @@ const filterFile = (_path, _item) => {
 
 	if(FILES.has(item.real))
 	{
-		Object.assign(item, FILES.get(item.real));
+		item = Object.assign(FILES.
+			get(item.real), item);
 	}
 
 	if(array(item.path, true))
 	{
-		item.path.pushUnique(_path = path.resolve(_path));
+		item.path.push(_path = path.resolve(_path));
 	}
 	else
 	{
@@ -679,6 +686,12 @@ const filterFile = (_path, _item) => {
 	else
 	{
 		item.name = [ _item.name ];
+	}
+
+	if(!item.path.includes(item.real))
+	{
+		item.path.unshift(item.real);
+		item.name.unshift(item.name);
 	}
 
 	if(!checkFilterLimits(item, item.path.length - 1))
@@ -1022,17 +1035,27 @@ const fileHandler = (_item) => {
 	_item.stream = fs.createReadStream(
 		_item.real, _item.options);
 
+	var isFinished = false;
+
 	_item.stream.once('close', () => {
-		_item.hash = _item.hash.digest(PARAM['digest']);
 		OPEN.remove(_item);
 
-		if(RESULT.has(_item.hash))
+		if(isFinished)
 		{
-			RESULT.get(_item.hash).push(_item);
+			_item.hash = _item.hash.digest(PARAM['digest']);
+
+			if(RESULT.has(_item.hash))
+			{
+				RESULT.get(_item.hash).push(_item);
+			}
+			else
+			{
+				RESULT.set(_item.hash, [ _item ]);
+			}
 		}
 		else
 		{
-			RESULT.set(_item.hash, [ _item ]);
+			_item.hash = null;
 		}
 
 		if(OPEN.length === 0 && (_SIGINT || _CODE !== null))
@@ -1046,14 +1069,17 @@ const fileHandler = (_item) => {
 	});
 	
 	_item.stream.once('error', (_e) => {
-		OPEN.remove(_item);
-		
 		if(_e.name !== 'AbortError')
 		{
 			ERROR.pushUnique(_item.real);
 		}
+		
+		isFinished = null;
 	});
 	
+	_item.stream.once('end',
+		() => isFinished = true);
+
 	_item.stream.on('data', (_chunk) => {
 		if(_chunk.length > _item.bytes)
 		{
@@ -1063,12 +1089,16 @@ const fileHandler = (_item) => {
 
 		_item.hash.update(_chunk);
 		
+		doneSize += _chunk.length;
+		todoSize -= _chunk.length;
+		
 		_item.done += _chunk.length;
 		_item.todo -= _chunk.length;
-		doneSize += _chunk.length;
 		
-		if((todoSize -= _chunk.length) <= 0)
+		if(_item.todo <= 0)
 		{
+			isFinished = true;
+
 			_item.stream.pause();
 			_item.stream.destroy();
 		}
@@ -1217,16 +1247,42 @@ var calledFinish = false; const onFinish = () => setImmediate(() => {
 		fg(190, 40, 120) + ')!'.info());
 	console.eol();
 
-	if(!PARAM['verbose']) console.warn('You disabled `' + '--verbose'.error() +
-		'`, so files without any symbolic link or duplicated data won\'t be shown!');
-	console.debug('The following list is sorted by amount of duplicate ' +
-		'files'.underline(true) + ', descending.');
+	var	duplicates = 0,
+		symlinks = 0;
+
+	for(const item of RESULT)
+	{
+		duplicates += (item[1].length - 1);
+		
+		for(const sub of item[1])
+		{
+			if(sub.path.length > 1 && PARAM['symlinks'])
+			{
+				symlinks += (sub.path.length - 1);
+			}
+		}
+	}
+
+	const results = (duplicates + symlinks);
+
+	if(results === 0 && !PARAM['verbose'])
+	{
+		console.info(('\tNo duplicates'.bold(true) + ' found' + '!'.
+			fg(255, 0, 0).bold(true)).underline(true) + EOL);
+		if(!PARAM['symlinks']) console.debug('Maybe you\'d like to enable ' +
+			'the `' + '--symlinks'.error() + '`?');
+		console.debug('And maybe you want to enable the `' + '--verbose'.
+			error() + '`?'.debug());
+		process.exit();
+	}
+	else
+	{
+		console.debug('The following list is sorted by amount of duplicate ' +
+			'files'.underline(true) + ', descending.');
+	}
 
 	console.eol();
 
-	//
-	//TODO/hier (und ueberall wo file-path-anzeige) am besten noch ein CUT der pfade..
-	//	... falls terminal-width zu klein fuer alles..!?! ;-) ...
 	//
 	for(const item of RESULT)
 	{
@@ -1236,7 +1292,7 @@ var calledFinish = false; const onFinish = () => setImmediate(() => {
 		
 		for(const v of values)
 		{
-			files.add(v.path[0]);
+			files.add(v);
 			
 			for(var i = 1; i < v.path.length; ++i)
 			{
@@ -1308,7 +1364,7 @@ var calledFinish = false; const onFinish = () => setImmediate(() => {
 			
 			for(const f of files)
 			{
-				printList.push([ printPath(f), f ]);
+				printList.push([ printPath(f.path[0]), f ]);
 				maxLength = Math.max(maxLength,
 					printList[printList.length - 1][0].
 						text.length);
@@ -1317,8 +1373,8 @@ var calledFinish = false; const onFinish = () => setImmediate(() => {
 			for(const pli of printList)
 			{
 				console.error('\t' + pli[0].pad(maxLength, ' ') + (' \t ' +
-					mathSize(FILES.get(pli[1]).size).warn() + (' / '.defaultFG(true) +
-					FILES.get(pli[1]).size.toLocaleString().bold(true) +
+					mathSize(pli[1].size).warn() + (' / '.defaultFG(true) +
+					pli[1].size.toLocaleString().bold(true) +
 					' Bytes').debug()).info());
 			}
 			
