@@ -19,6 +19,8 @@ An example.
 ## Download / Source Code
 * [`bytecmp.js`](./src/bytecmp.js) (v**0.9.10**);
 
+But the code is pretty ugly..
+
 <br><br><br>
 
 # Contact
