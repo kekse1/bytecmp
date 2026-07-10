@@ -22,7 +22,7 @@ Finally.. it runs \[**2026-07-08**\]!
 
 <br>
 
-## Preview
+## Screenshots
 Two examples. The first image is the output of `--help / -?`, the second one shows
 an example usage of this tool. They're from version v**0.9.10**; it look's a **bit**
 different now. Just a bit..
