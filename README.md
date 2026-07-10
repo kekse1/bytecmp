@@ -35,7 +35,7 @@ different now. Just a bit..
 ## Download / Source Code
 * [`bytecmp.js`](./src/bytecmp.js) (v**0.9.11**);
 
-But the code is pretty ugly..
+But the code is **pretty ugly**.. sorry. \^_\^
 
 <br>
 
