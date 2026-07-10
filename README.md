@@ -2,8 +2,6 @@
 
 # `bytecmp`
 
-<br>
-
 Finally.. it runs \[**2026-07-08**\]!
 
 <br><br>
