@@ -1,4 +1,5 @@
-<img src="without.svg" /><br><img src="https://kekse.biz/github.php?draw&override=github:bytecmp" />
+<img src="without.svg" /><br>
+<img src="https://kekse.biz/github.php?draw&override=github:bytecmp" />
 
 # `bytecmp`
 
