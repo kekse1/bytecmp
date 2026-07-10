@@ -6,14 +6,14 @@
  */
 
 //
-const
-	VERSION = '0.9.10';
+//TODO/am besten noch ein CUT der pfade...
+//	... falls terminal-width zu klein.
+//
 
 //
-//
-//TODO/am besten noch ein CUT der pfade..
-//	... falls terminal-width zu klein fuer alles..!?! ;-) ...
-//
+const
+	NAME = 'bytecmp',
+	VERSION = '0.9.11';
 
 //
 const
@@ -213,6 +213,11 @@ const mathSize = (_bytes, _style = true) => Math.size(
 	false, _style);
 
 const printPath = (_path, _relative = PARAM['relative']) => {
+	if(_relative === null)
+	{
+		_relative = PARAM['relative'];
+	}
+	
 	if(bool(_relative))
 	{
 		_relative = (_relative ? process.cwd() : null);
@@ -392,7 +397,7 @@ help.prepare.type = (_item) => {
 };
 
 help.prepare.header = () => [
-	'', '\t`' + 'bytecmp'.info() + String.none() +
+	'', '\t`' + NAME.bold() + String.none() +
 	'`\tv' + VERSION, '\t\tCopyright (c) Sebastian ' +
 	'Kucharczyk <kuchen@kekse.biz>', '',
 	'  Syntax: ' + path.basename(process.argv[1]) +
@@ -599,7 +604,7 @@ if(PARAM['depth-max'] > 0 && PARAM['depth-min'] > 0)
 }
 
 //
-var	ignored = 0;
+var ignored = 0;
 
 const checkFilterLimits = (_item, _index = 0) => {
 	if(PARAM['glob'] && !_item.name[_index].glob(PARAM['glob']))
@@ -1313,8 +1318,8 @@ var calledFinish = false; const onFinish = () => setImmediate(() => {
 
 		console.eol();
 		console.line('=');
-		console.info('\t' + item[0].defaultFG(true).bold(true));
-		console.line('= == ');
+		console.info('  ' + item[0].fg(0, 0, 0).bg(255, 255, 255));
+		console.line('= ');
 		console.eol();
 
 		if(PARAM['symlinks'])

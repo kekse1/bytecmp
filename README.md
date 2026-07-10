@@ -17,9 +17,16 @@ An example.
 <br><br>
 
 ## Download / Source Code
-* [`bytecmp.js`](./src/bytecmp.js) (v**0.9.10**);
+* [`bytecmp.js`](./src/bytecmp.js) (v**0.9.11**);
 
 But the code is pretty ugly..
+
+<br>
+
+> [!IMPORTANT]
+> You'd need to create some **polyfill**s on your own.
+> I just placed the sources here for your inf0. The
+> rest is up to you.. **sorry**!
 
 <br><br><br>
 
