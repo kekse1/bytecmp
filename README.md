@@ -12,11 +12,22 @@ Finally.. it runs \[**2026-07-08**\]!
 
 <br><br>
 
-## Preview
-An example.
+## Description
+(**TODO**)
 
-![`help` output](./img/help.png)
-![example output](./img/example.png)
+<br>
+
+## Features
+(**TODO**)
+
+<br>
+
+## Preview
+Two examples. The first image is the output of `--help / -?`, the second one shows
+an example usage of this tool.
+
+<br>![`help` output](./img/help.png)
+<br>![example output](./img/example.png)
 
 <br><br>
 
@@ -28,9 +39,10 @@ But the code is pretty ugly..
 <br>
 
 > [!IMPORTANT]
-> You'd need to create some **polyfill**s on your own.
+> You need to create some **polyfill**s on your own.
 > I just placed the sources here for your inf0. The
-> rest is up to you.. **sorry**!
+> rest is up to you.. **sorry** (I've got reasons
+> for this.. really)!
 
 <br><br><br>
 
