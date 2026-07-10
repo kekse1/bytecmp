@@ -4,6 +4,12 @@
 
 Finally.. it runs \[**2026-07-08**\]!
 
+<br>
+
+> [!NOTE]
+> First **TODO** item is now to create a better overview (and feature list) etc.
+> in this `README.md`! So it's easier for you to get to know why this tool exists.
+
 <br><br>
 
 ## Preview
