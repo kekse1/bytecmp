@@ -45,6 +45,11 @@ But the code is pretty ugly..
 > rest is up to you.. **sorry** (I've got reasons
 > for this.. really)!
 
+<br>
+
+## TODO
+* **Maybe** I'll give it a function to CUT DOWN the output paths, for smaller terminals. Maybe..
+
 <br><br><br>
 
 # Contact
