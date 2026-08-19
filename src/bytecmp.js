@@ -16,7 +16,7 @@
 //
 const
 	NAME = 'bytecmp',
-	VERSION = '0.9.11';
+	VERSION = '0.9.12';
 
 //
 const
@@ -1120,11 +1120,15 @@ const fileHandler = (_item) => {
 
 //
 var CURSOR = true;
-	const cursor = (_enabled = !CURSOR) => {
-		if(_enabled === CURSOR) return false;
-		console.getTTY(false).write(String[(_enabled ?
-			'show' : 'hide') + 'Cursor']());
-		CURSOR = _enabled; return true; };
+
+const cursor = (_enabled = !CURSOR) => {
+	if(_enabled === CURSOR) return false;
+	const tty = console.getTTY(false);
+	if(!tty) return false;
+	tty.write(String[(_enabled ?
+		'show' : 'hide') + 'Cursor']());
+	CURSOR = _enabled; return true;
+};
 
 const startProcess = () => {
 	process.once('SIGINT', () => stopProcess(130, null, true));

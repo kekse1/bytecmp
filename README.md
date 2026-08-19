@@ -3,7 +3,7 @@
 
 # `bytecmp`
 
-Finally.. it runs \[**2026-07-08**\]!
+Finally.. it runs \[**2026-07-08**\]! Plus a tiny update now \[**2026-08-19**\]..
 
 <br>
 
@@ -34,7 +34,7 @@ different now. Just a bit..
 <br><br>
 
 ## Download / Source Code
-* [`bytecmp.js`](./src/bytecmp.js) (v**0.9.11**);
+* [`bytecmp.js`](./src/bytecmp.js) v**0.9.12** (updated \[**2026-08-19**\])
 
 But the code is **pretty ugly**.. sorry. \^_\^
 
