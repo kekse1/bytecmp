@@ -6,6 +6,9 @@
  */
 
 //
+//TODO/WICHTIG!!1 am ende noch ausgabe *aller* duplicates
+//		bzw. anzahl solcher dateien oder so.. in total!1
+//
 //TODO/am besten noch ein CUT der pfade...
 //	... falls terminal-width zu klein.
 //
