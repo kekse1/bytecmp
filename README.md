@@ -34,7 +34,7 @@ different now. Just a bit..
 <br><br>
 
 ## Download / Source Code
-* [`bytecmp.js`](./src/bytecmp.js) v**0.9.12** (updated \[**2026-08-19**\])
+* [`bytecmp.js`](./src/bytecmp.js) v**0.9.12** (updated **2026-08-19**);
 
 But the code is **pretty ugly**.. sorry. \^_\^
 
