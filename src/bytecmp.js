@@ -12,6 +12,10 @@
 //TODO/am besten noch ein CUT der pfade...
 //	... falls terminal-width zu klein.
 //
+//TODO/"found 2 files (with the same hash sum):"
+//	=> "... (with ... for [first] (n) bytes)" ...
+//
+//
 
 //
 const
