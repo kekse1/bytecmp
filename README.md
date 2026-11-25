@@ -3,8 +3,6 @@
 
 # `bytecmp`
 
-Finally.. it runs \[**2026-07-08**\]! Plus a tiny update \[**2026-08-19**\]..
-
 <br>
 
 > [!NOTE]

@@ -658,7 +658,7 @@ var	totalFiles = 0,
 const filterFile = (_path, _item) => {
 	var item = fs.statSync(_path, {
 		throwIfNoEntry: false,
-		bigInt: false });
+		bigint: false });
 
 	if(!item || !item.isFile())
 	{
